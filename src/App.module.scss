@@ -1,0 +1,21 @@
+.app {
+  display: flex;
+  justify-content: center;
+
+  height: 100%;
+
+  .container {
+    margin-top: 125px;
+    width: 500px;
+
+    .input {
+      width: 100%;
+
+      margin: 10px 0;
+      box-sizing: border-box;
+
+      font-size: 18px;
+      padding: 8px 8px;
+    }
+  }
+}
