@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.scss';
+
+import './global.scss';
 import App from './App';
 
 import { Provider } from 'react-redux';
@@ -14,9 +15,8 @@ root.render(
   //   <React.StrictMode>
   <BrowserRouter>
     <Provider store={store}>
-      <App />,
+      <App />
     </Provider>
-    ,
   </BrowserRouter>,
   //   </React.StrictMode>,
 );

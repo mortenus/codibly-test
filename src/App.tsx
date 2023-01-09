@@ -35,9 +35,7 @@ const App = ({ users, count, page, filteredUsers, itemsLoading }: any) => {
 
   // handleres
   const handlePageChange = (e: React.ChangeEvent<unknown>, value: number) => {
-    if (value > 0) {
-      setSearch({ page: value.toString() });
-    }
+    setSearch({ page: value.toString() });
   };
 
   const handleUrlQuery = () => {

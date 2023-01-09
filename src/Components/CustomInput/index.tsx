@@ -9,8 +9,6 @@ type TCustomInput = {
 const CustomInput = ({ setSearch }: TCustomInput) => {
   const [inputValue, setInputValue] = React.useState('');
 
-  const handleOutChange = (text: string) => setInputValue(text);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target.value;
 
