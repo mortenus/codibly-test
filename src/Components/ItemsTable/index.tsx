@@ -10,12 +10,13 @@ import {
   TableRow,
 } from '@mui/material';
 import { TItems } from '../../types';
-import CustomTableRow from '../CustomTableRow';
 
 type TItemsTable = {
   filteredUsers: TItems[];
   isLoading: boolean;
 };
+
+const tableHeadRows = ['ID', 'Year', 'Name'];
 
 const ItemsTable = ({ filteredUsers, isLoading }: TItemsTable) => {
   return (
@@ -23,18 +24,32 @@ const ItemsTable = ({ filteredUsers, isLoading }: TItemsTable) => {
       <Table stickyHeader aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="left">ID</TableCell>
-            <TableCell align="left">Year</TableCell>
-            <TableCell align="left">Name</TableCell>
+            {tableHeadRows.map((item, index) => (
+              <TableCell key={index} align="left">
+                {item}
+              </TableCell>
+            ))}
           </TableRow>
         </TableHead>
         <TableBody>
           {isLoading ? (
-            <div>Loading...</div>
+            <TableRow>
+              <TableCell />
+              <TableCell align="center">Loading...</TableCell>
+              <TableCell />
+            </TableRow>
           ) : filteredUsers ? (
-            filteredUsers.map((item: TItems, index) => <CustomTableRow index={index} {...item} />)
+            filteredUsers.map(({ id, year, name, color }: TItems) => (
+              <TableRow key={id} style={{ backgroundColor: color }}>
+                <TableCell align="left">{id}</TableCell>
+                <TableCell align="left">{year}</TableCell>
+                <TableCell align="left">{name}</TableCell>
+              </TableRow>
+            ))
           ) : (
-            <div>No Items Found</div>
+            <TableRow>
+              <TableCell align="center">No Items Found</TableCell>
+            </TableRow>
           )}
         </TableBody>
       </Table>

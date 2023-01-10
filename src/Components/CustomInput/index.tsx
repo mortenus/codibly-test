@@ -12,15 +12,18 @@ const CustomInput = ({ setSearch }: TCustomInput) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target.value;
 
+    // validation
     if (/^\d+$/.test(target)) {
       setInputValue(target);
     }
 
-    if (target === '') {
-      setInputValue(target);
+    if (!target) {
       setSearch({});
+      setInputValue('');
     }
   };
+
+  // debounce for throttling search
   React.useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       if (!inputValue) {
@@ -45,4 +48,4 @@ const CustomInput = ({ setSearch }: TCustomInput) => {
   );
 };
 
-export default CustomInput;
+export default React.memo(CustomInput);

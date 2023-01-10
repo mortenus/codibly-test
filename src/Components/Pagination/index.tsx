@@ -9,12 +9,14 @@ type TPaginationWrapper = {
   handlePageChange: (event: React.ChangeEvent<unknown>, value: number) => void;
 };
 
-const PaginationWrapper = ({ page, handlePageChange, totalPages }: TPaginationWrapper) => {
-  return (
-    <Stack spacing={2}>
-      <Pagination count={+totalPages} page={+page} onChange={handlePageChange} />
-    </Stack>
-  );
-};
+const PaginationWrapper = React.memo(
+  ({ page, handlePageChange, totalPages }: TPaginationWrapper) => {
+    return (
+      <Stack spacing={2}>
+        <Pagination count={+totalPages} page={+page} onChange={handlePageChange} />
+      </Stack>
+    );
+  },
+);
 
 export default PaginationWrapper;
