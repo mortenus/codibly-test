@@ -19,7 +19,7 @@ type TItemsTable = {
 
 const ItemsTable = ({ filteredUsers, isLoading }: TItemsTable) => {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer style={{ height: '330px' }} component={Paper}>
       <Table stickyHeader aria-label="simple table">
         <TableHead>
           <TableRow>

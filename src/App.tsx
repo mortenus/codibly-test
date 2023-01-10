@@ -11,7 +11,7 @@ import { setCount, fetchItems, filterItems, setFilteredItems } from './redux/sli
 import { ItemsTable, Pagination, CustomInput } from './Components';
 import { TItems } from './types';
 
-const App = ({ users, count, page, filteredUsers, itemsLoading }: any) => {
+const App = ({ users, count, page, filteredUsers, itemsLoading, totalPages }: any) => {
   const [search, setSearch] = useSearchParams();
 
   React.useEffect(() => {
@@ -63,7 +63,7 @@ const App = ({ users, count, page, filteredUsers, itemsLoading }: any) => {
         <CustomInput setSearch={setSearch} />
         <ItemsTable filteredUsers={filteredUsers} isLoading={itemsLoading} />
 
-        <Pagination page={page} handlePageChange={handlePageChange} />
+        <Pagination totalPages={totalPages} page={page} handlePageChange={handlePageChange} />
       </div>
     </div>
   );
@@ -74,5 +74,6 @@ export default connect(({ items }) => ({
   filteredUsers: items.filteredUsers,
   count: items.count,
   page: items.page,
+  totalPages: items.pages,
   itemsLoading: items.loading,
 }))(App);

@@ -5,13 +5,14 @@ import { Stack } from '@mui/system';
 
 type TPaginationWrapper = {
   page: number | string;
+  totalPages: number | string;
   handlePageChange: (event: React.ChangeEvent<unknown>, value: number) => void;
 };
 
-const PaginationWrapper = ({ page, handlePageChange }: TPaginationWrapper) => {
+const PaginationWrapper = ({ page, handlePageChange, totalPages }: TPaginationWrapper) => {
   return (
     <Stack spacing={2}>
-      <Pagination count={5} page={+page} onChange={handlePageChange} />
+      <Pagination count={+totalPages} page={+page} onChange={handlePageChange} />
     </Stack>
   );
 };
